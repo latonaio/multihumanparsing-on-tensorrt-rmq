@@ -1,0 +1,17 @@
+version: "3"
+services:
+  multi-human-parsing-rabbit-mq:
+    container_name: mhp-rmq
+    privileged: yes
+    network_mode: host
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/jetson-inference
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev:/dev
+    environment:
+      - DISPLAY
+    tty: true
+
